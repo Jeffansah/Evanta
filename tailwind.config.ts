@@ -69,6 +69,7 @@ module.exports = withUt({
       fontFamily: {
         poppins: ["var(--font-poppins)"],
         urbanist: ["Urbanist", "sans-serif"],
+        ibm: ["IBM Plex Serif", "serif"],
       },
       backgroundImage: {
         "dotted-pattern": "url('/assets/images/dotted-pattern.png')",
@@ -79,6 +80,9 @@ module.exports = withUt({
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        imageshadow: "15px 15px 5px 0px rgba(255,255,255,1)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -88,10 +92,15 @@ module.exports = withUt({
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        appear: {
+          from: { width: "0" },
+          to: { width: "100%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        appear: "appear 1s ease-in-out 2.5s forwards",
       },
     },
   },
