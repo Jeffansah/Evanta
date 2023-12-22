@@ -8,6 +8,7 @@ import ornament8 from "../../public/assets/images/Marketing-Agency-Ornament-8.we
 import ornament6 from "../../public/assets/images/Marketing-Agency-Ornament-6.webp";
 import ornament7 from "../../public/assets/images/Marketing-Agency-Ornament-7.webp";
 import Image from "next/image";
+import Trusted from "./components/Trusted";
 
 export default function Home() {
   return (
@@ -81,6 +82,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Trusted />
     </>
   );
 }
