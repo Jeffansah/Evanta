@@ -14,7 +14,7 @@ export const connectToDatabase = async () => {
   cached.promise =
     cached.promise ||
     mongoose.connect(MONGODB_URI, {
-      dbName: "Evanta",
+      dbName: "events",
       bufferCommands: false,
     });
 
