@@ -16,7 +16,7 @@ const NavItems = () => {
             href={link.route}
             className={`${
               pathname === link.route ? "text-primary-500" : ""
-            } flex-center p-medium whitespace-nowrap`}
+            } flex-center p-medium whitespace-nowrap hover:text-primary-500 transition-colors duration-100`}
           >
             {link.label}
           </Link>
