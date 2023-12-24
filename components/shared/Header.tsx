@@ -9,7 +9,7 @@ import MobileNav from "./MobileNav";
 const Header = () => {
   return (
     <header className="w-full border-b">
-      <div className="wrapper flex items-center justify-between">
+      <div className="wrapper flex items-center justify-between md:px-6">
         <Link href={"/"} className="w-36 flex items-center gap-1">
           <Image src={logo} alt="logo" width={38} height={38} />
           <h1 className={`text-2xl font-[600] font-urbanist`}>Evanta</h1>

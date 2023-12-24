@@ -1,6 +1,9 @@
 const Trusted = () => {
   return (
-    <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+    <section
+      id="events"
+      className="wrapper my-8 flex flex-col gap-8 md:gap-12 md:px-6"
+    >
       <h2 className="h2-bold">
         Trusted by <br /> Thousands of Events
       </h2>
