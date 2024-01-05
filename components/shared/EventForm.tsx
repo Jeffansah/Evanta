@@ -22,10 +22,13 @@ import { FileUploader } from "./FileUploader";
 import { useState } from "react";
 import Image from "next/image";
 import DatePicker from "react-datepicker";
+import { useUploadThing } from "@/lib/uploadthing";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
+import { useRouter } from "next/navigation";
+import { createEvent } from "@/lib/actions/event.actions";
 
 type EventFormProps = {
   userId: string;
@@ -37,15 +40,43 @@ const EventForm = ({ userId, type }: EventFormProps) => {
 
   const initialValues = eventDefaultValues;
 
+  const { startUpload } = useUploadThing("imageUploader");
+
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialValues,
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const eventData = values;
+
+    let uploadedImageUrl = values.imageUrl;
+
+    if (files.length > 0) {
+      const uploadedImages = await startUpload(files);
+
+      if (!uploadedImages) return;
+
+      uploadedImageUrl = uploadedImages[0].url;
+    }
+
+    if (type === "Create") {
+      try {
+        const newEvent = await createEvent({
+          event: { ...values, imageUrl: uploadedImageUrl },
+          userId,
+          path: "/profile",
+        });
+        if (newEvent) {
+          form.reset();
+          router.push(`/events/${newEvent._id}`);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   return (
@@ -262,6 +293,8 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                                 Free Ticket
                               </Label>
                               <Checkbox
+                                onCheckedChange={field.onChange}
+                                checked={field.value}
                                 id="isFree"
                                 className="mr-2 h-5 w-5 border-2 border-primary-500"
                               />
@@ -311,7 +344,7 @@ const EventForm = ({ userId, type }: EventFormProps) => {
           disabled={form.formState.isSubmitting}
           className="button col-span-2 w-full"
         >
-          {form.formState.isSubmitting ? `${type}ing` : `${type} Event`}
+          {form.formState.isSubmitting ? `Submitting...` : `${type} Event`}
         </Button>
       </form>
     </Form>
