@@ -14,7 +14,7 @@ import NavItems from "./NavItems";
 
 const MobileNav = () => {
   return (
-    <nav className="md:hidden">
+    <nav className="md:hidden ml-4">
       <Sheet>
         <SheetTrigger className="align-middle">
           <Image
