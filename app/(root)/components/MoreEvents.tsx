@@ -1,11 +1,22 @@
+import CategoryFilter from "@/components/shared/CategoryFilter";
 import Collection from "@/components/shared/Collection";
+import Search from "@/components/shared/Search";
 import { getAllEvents } from "@/lib/actions/event.actions";
+import { SearchParamProps } from "@/types";
 
-const MoreEvents = async () => {
+const MoreEvents = async ({
+  page,
+  searchText,
+  category,
+}: {
+  page: number;
+  searchText: string;
+  category: string;
+}) => {
   const events = await getAllEvents({
-    query: "",
-    category: "",
-    page: 1,
+    query: searchText,
+    category,
+    page,
     limit: 6,
   });
 
@@ -18,7 +29,7 @@ const MoreEvents = async () => {
         Trusted by <br /> Thousands of Events
       </h2>
       <div className="flex w-full flex-col gap-5 md:flex-row">
-        Search Category Filter
+        <Search /> <CategoryFilter />
       </div>
       <Collection
         data={events?.data}

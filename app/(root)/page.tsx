@@ -10,14 +10,19 @@ import ornament7 from "../../public/assets/images/Marketing-Agency-Ornament-7.we
 import Image from "next/image";
 import MoreEvents from "./components/MoreEvents";
 import { getAllEvents } from "@/lib/actions/event.actions";
+import { SearchParamProps } from "@/types";
 
-export default async function Home() {
+export default async function Home({ searchParams }: SearchParamProps) {
+  const page = Number(searchParams?.page) || 1;
+  const searchText = (searchParams?.query as string) || "";
+  const category = (searchParams?.category as string) || "";
+
   return (
     <>
       <section className="bg-primary-50 bg-dotted bg-contain py-5 md:py-10">
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0 md:px-6">
           <div className="flex flex-col justify-center gap-8">
-            <h1 className="font-ibm text-7xl max-md:text-4xl tracking-wide leading-[1.3] max-md:leading-[1.3] max-md:min-w-full">
+            <h1 className="font-ibm text-7xl max-md:text-5xl tracking-wide leading-[1.3] max-md:leading-[1.3] max-md:min-w-full">
               Celebrating Moments That{" "}
               <span className="relative after:absolute after:bottom-[6px] max-md:after:bottom-[2px] after:w-0 after:h-2 max-md:after:h-[4px] after:bg-primary-500 after:left-0 after:animate-appear">
                 Matter
@@ -83,7 +88,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <MoreEvents />
+      <MoreEvents page={page} searchText={searchText} category={category} />
     </>
   );
 }

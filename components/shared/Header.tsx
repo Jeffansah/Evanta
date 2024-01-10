@@ -18,18 +18,17 @@ const Header = () => {
           <NavItems />
         </nav>
         <div className="flex w-32 justify-end">
+          <SignedOut>
+            <Button asChild className="rounded-full mr-4" size="sm">
+              <Link href={"/sign-in"}>Sign in</Link>
+            </Button>
+          </SignedOut>
           <div className="flex items-center gap-4">
             <SignedIn>
               <UserButton afterSignOutUrl="/" />
             </SignedIn>
             <MobileNav />
           </div>
-
-          <SignedOut>
-            <Button asChild className="rounded-full" size="lg">
-              <Link href={"/sign-in"}>Sign in</Link>
-            </Button>
-          </SignedOut>
         </div>
       </div>
     </header>
