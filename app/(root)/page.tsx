@@ -8,9 +8,10 @@ import ornament8 from "../../public/assets/images/Marketing-Agency-Ornament-8.we
 import ornament6 from "../../public/assets/images/Marketing-Agency-Ornament-6.webp";
 import ornament7 from "../../public/assets/images/Marketing-Agency-Ornament-7.webp";
 import Image from "next/image";
-import Trusted from "./components/Trusted";
+import MoreEvents from "./components/MoreEvents";
+import { getAllEvents } from "@/lib/actions/event.actions";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <section className="bg-primary-50 bg-dotted bg-contain py-5 md:py-10">
@@ -82,7 +83,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Trusted />
+      <MoreEvents />
     </>
   );
 }

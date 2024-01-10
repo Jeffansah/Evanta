@@ -21,7 +21,7 @@ export type CreateEventParams = {
   event: {
     title: string;
     description: string;
-    location: string;
+    located: string;
     imageUrl: string;
     startDateTime: Date;
     endDateTime: Date;
@@ -40,7 +40,7 @@ export type UpdateEventParams = {
     title: string;
     imageUrl: string;
     description: string;
-    location: string;
+    located: string;
     startDateTime: Date;
     endDateTime: Date;
     categoryId: string;
