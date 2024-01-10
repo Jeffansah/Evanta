@@ -23,7 +23,7 @@ const MoreEvents = async ({
   return (
     <section
       id="events"
-      className="wrapper my-8 flex flex-col gap-8 md:gap-12 md:px-6"
+      className="wrapper my-8 md:my-14 flex flex-col gap-8 md:gap-12 md:px-6"
     >
       <h2 className="h2-bold">
         Trusted by <br /> Thousands of Events
@@ -37,8 +37,8 @@ const MoreEvents = async ({
         emptyStateSubtext="Come back later for more events."
         collectionType="All_Events"
         limit={6}
-        page={1}
-        totalPages={2}
+        page={page}
+        totalPages={events?.totalPages}
       />
     </section>
   );

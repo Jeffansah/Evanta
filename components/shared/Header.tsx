@@ -19,7 +19,7 @@ const Header = () => {
         </nav>
         <div className="flex w-32 justify-end">
           <SignedOut>
-            <Button asChild className="rounded-full mr-4" size="sm">
+            <Button asChild className="rounded-full mr-4" size="lg">
               <Link href={"/sign-in"}>Sign in</Link>
             </Button>
           </SignedOut>

@@ -19,8 +19,8 @@ const MobileNav = () => {
         <SheetTrigger className="align-middle">
           <Image
             src={"/assets/icons/menu.png"}
-            width={24}
-            height={24}
+            width={30}
+            height={30}
             alt="menu toggler"
             className="cursor-pointer"
           />
