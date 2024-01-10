@@ -34,8 +34,8 @@ import { IEvent } from "@/mongo/database/models/event.model";
 type EventFormProps = {
   userId: string;
   type: "Create" | "Update";
-  event: IEvent;
-  eventId: string;
+  event?: IEvent;
+  eventId?: string;
 };
 
 const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
