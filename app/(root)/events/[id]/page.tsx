@@ -6,6 +6,7 @@ import {
   getRelatedEventsByCategory,
 } from "@/lib/actions/event.actions";
 import { formatDateTime } from "@/lib/utils";
+import { IEvent } from "@/mongo/database/models/event.model";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
 
@@ -13,7 +14,7 @@ const EventDetails = async ({
   params: { id },
   searchParams,
 }: SearchParamProps) => {
-  const event = await getEventById(id);
+  const event = (await getEventById(id)) as IEvent;
 
   const relatedEvents = await getRelatedEventsByCategory({
     categoryId: event.category._id,
@@ -85,7 +86,7 @@ const EventDetails = async ({
                   width={32}
                   height={32}
                 />
-                <p className="p-medium-16 lg:p-regular-20">{event.location}</p>
+                <p className="p-medium-16 lg:p-regular-20">{event.located}</p>
               </div>
             </div>
 
